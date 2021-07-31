@@ -1,0 +1,22 @@
+version: "3.8"
+
+services:
+
+  leo_db:
+    container_name: leo_db
+    build: ./setup/postgres
+    ports:
+      - 5432:5432
+    volumes:
+      - ./setup/postgres:/docker-entrypoint-initdb.d:delegated
+      - ./local/postgres:/var/lib/postgresql/data:delegated
+    environment:
+      POSTGRES_MULTIPLE_DATABASES: leo_db
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: secret
+      
+  leo_cache:
+    container_name: leo_cache
+    image: redis
+    ports:
+      - 6379:6379
