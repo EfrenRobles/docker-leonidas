@@ -2,6 +2,18 @@ version: "3.8"
 
 services:
 
+  # leo_api:
+    # container_name: leoapi
+    # image: compose-api
+    # build: ./setup/java/api
+    # ports:
+      # - 8080:8080
+    # links:
+      # - leo_db
+      # - leo_cache      
+    # volumes:
+      # - ./shared/leo-api:/var/www/html/api:delegated
+
   leo_db:
     container_name: leo_db
     build: ./setup/postgres
